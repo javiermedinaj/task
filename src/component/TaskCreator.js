@@ -1,14 +1,16 @@
 import { useState } from "react";
 
-export const TaskCreator = (props) => {
-    console.log(props)
-    const [newTaskName, setNewTaskName] = useState();
+export const TaskCreator = ({ createNewTask }) => {
+    const [newTaskName, setNewTaskName] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        localStorage.setItem('task', newTaskName);
+        createNewTask(newTaskName)
         setNewTaskName('');
     }
+
+
+
     return (
         <form onSubmit={handleSubmit}>
             <input
